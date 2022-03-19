@@ -2,7 +2,7 @@ name: twitter bot
 
 on:
   schedule:
-    - cron: "6 * * * *" #runs every 5min
+    - cron: "*/10 * * * *" #runs every 10min
         
 jobs:
   build:
