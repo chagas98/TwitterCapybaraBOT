@@ -9,10 +9,10 @@ consumer_secret = os.environ["TWITTERBTC_CONSUMER_SECRET"]
 access_token = os.environ["TWITTERBTC_TOKEN_KEY"]
 access_token_secret = os.environ["TWITTERBTC_TOKEN_SECRET"]
 
-query = '(biotec OR #biotec OR biotecnologia OR #BIOTEC) (unila OR #UNILA OR #unila OR UNILA) -is:retweet -lixo -comunista -ridiculo'
+query = '(biotec OR #biotec OR biotecnologia OR #BIOTEC) (unila OR #UNILA OR #unila OR UNILA) -from:BiotecUnilaBOT -is:retweet -lixo -comunista -ridiculo'
 
 tweet_text = "\U0001F947 Você sabia que o Curso de Bacharelhado em Biotecnologia - UNILA é nota 5 na avaliação do MEC? https://portal.unila.edu.br/noticias/cursos-da-unila-obtem-notas-4-e-5-em-avaliacao-do-mec Você pode conferir mais sobre o curso aqui: https://portal.unila.edu.br/graduacao/biotecnologia/ppc"
-tweet_text2 = "Além disso, você pode conversar com estudantes de diferentes iniciativas (pelo Instagram), como: Centro Acadêmico (cabiotec.unila), Time de Biologia Sintética (igem_synfronteras), Empresa Junior (latinabiotecjr), Atlética Esportiva (atleticaacbio) e a LiNA (Liga Nac. de Estudantes de Biotec - biotecnologiaunila)"
+tweet_text2 = "Além disso, você pode conversar com estudantes de diferentes iniciativas (no insta), como: Centro Acadêmico (cabiotec.unila), Time de Biologia Sintética (igem_synfronteras), Empresa Junior (latinabiotecjr), Atlética Esportiva (atleticaacbio) e a LiNA (biotecnologiaunila)"
 Myusername = "BiotecUnilaBOT"
 
 #Utilitarios
@@ -43,20 +43,25 @@ def Found_Reply_NewTweets(query):
       print(tweet)
       rts= Retweeters(tweet.id).data
       
-      if rts is None:
-        continue
-      
-      rt_list = []
-      for rt in rts:
-        rt_list.append(rt.username)
+      if rts is not None:
+       
+      	rt_list = []
+      	for rt in rts:
+        	rt_list.append(rt.username)
+        	print("RT>0")
 
-      if Myusername not in rt_list:
+      	if Myusername not in rt_list:
+          print("Tweeting")
+          Retweet(tweet.id)
+          ReplyTweet(tweet.id, tweet_text)
+          ReplyTweet(tweet.id, tweet_text2)
+      else:
+        print("RT<0;Tweeting")
         Retweet(tweet.id)
         ReplyTweet(tweet.id, tweet_text)
         ReplyTweet(tweet.id, tweet_text2)
-        ReplyTweet(tweet.id, tweet_text2)
+        
     return 
 
 Found_Reply_NewTweets(query)
 
-print("\U0001F947")
