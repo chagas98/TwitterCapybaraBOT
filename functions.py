@@ -10,6 +10,13 @@ Original file is located at
 !pip3 install tweepy --upgrade
 
 import tweepy
+import os
+
+bearer_token = os.environ["TWITTERBTC_BEARER_TOKEN"]
+consumer_key = os.environ["TWITTERBTC_CONSUMER_KEY"]
+consumer_secret = os.environ["TWITTERBTC_CONSUMER_SECRET"]
+access_token = os.environ["TWITTERBTC_TOKEN_KEY"]
+access_token_secret = os.environ["TWITTERBTC_TOKEN_SECRET"]
 
 query = '(biotec OR #biotec OR biotecnologia OR #BIOTEC) (unila OR #UNILA OR #unila OR UNILA) -is:retweet -lixo -comunista -ridiculo'
 
