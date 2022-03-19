@@ -1,0 +1,29 @@
+name: twitter bot
+
+on:
+  schedule:
+    - cron: "5 * * * *" #runs every 5min
+        
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8 # Install the python version needed
+    - name: Install Python dependencies
+      run: python3 -m pip install tweepy
+    - name: Execute Python Script # Run the functions.py on the repository root directory
+      env: 
+          TWITTERBTC_BEARER_TOKEN: ${{  secrets.TWITTERBTC_BEARER_TOKEN  }}
+          TWITTERBTC_CONSUMER_KEY: ${{  secrets.TWITTERBTC_CONSUMER_KEY  }}
+          TWITTERBTC_CONSUMER_SECRET: ${{ secrets.TWITTERBTC_CONSUMER_SECRET  }}
+          TWITTERBTC_TOKEN_KEY: ${{  secrets.TWITTERBTC_TOKEN_KEY  }}
+          TWITTERBTC_TOKEN_SECRET: ${{  secrets.TWITTERBTC_TOKEN_SECRET  }}
+      run: |
+          python functions.py
+
