@@ -16,8 +16,7 @@ jobs:
       with:
         python-version: 3.8 # Install the python version needed
     - name: Install Python dependencies
-      run: python3 -m pip install --upgraded pip
-           python3 pip install tweetpy 
+      run: python3 -m pip install tweepy
     - name: Execute Python Script # Run the functions.py on the repository root directory
       env: 
           TWITTERBTC_BEARER_TOKEN: ${{  secrets.TWITTERBTC_BEARER_TOKEN  }}
