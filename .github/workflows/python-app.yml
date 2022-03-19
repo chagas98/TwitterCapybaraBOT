@@ -21,5 +21,11 @@ jobs:
     - name: Install Python dependencies
       run: python -m pip install --upgrade pip tweepy
     - name: Execute Python Script # Run the functions.py on the repository root directory
+      env: 
+          TWITTERBTC_BEARER_TOKEN: ${{  secrets.TWITTERBTC_BEARER_TOKEN  }}
+          TWITTERBTC_CONSUMER_KEY: ${{  secrets.TWITTERBTC_CONSUMER_KEY  }}
+          TWITTERBTC_CONSUMER_SECRET: ${{ secrets.TWITTERBTC_CONSUMER_SECRET  }}
+          TWITTERBTC_TOKEN_KEY: ${{  secrets.TWITTERBTC_TOKEN_KEY  }}
+          TWITTERBTC_TOKEN_SECRET: ${{  secrets.TWITTERBTC_TOKEN_SECRET  }}
       run: |
           python functions.py
