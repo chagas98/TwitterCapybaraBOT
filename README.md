@@ -5,9 +5,13 @@ This is a simple project/bot, I wanted to test some GitHub Actions options and l
 
 ## Built
 1. Connecting to Twitter
-  a. Creating a developlment account 
+
+  a. Creating a developlment account
+  
   b. Setting the permissions
+  
   c. Getting the Tokens and Keys
+  
 2. Taking the functions from Twitter API v2
 3. Setting GitHub Actions
 4. Run
